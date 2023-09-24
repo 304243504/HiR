@@ -1,7 +1,7 @@
 # HiR analysis pipeline
 
 ## Introduction
-This is a specialized pipeline to analysis RNA-RNA interaction information captured by an explicit bridge linker. The pipeline consists of three main steps:
+This is a specialized pipeline under development to analysis RNA-RNA interaction information captured by an explicit bridge linker. The pipeline consists of three main steps:
 1. linker identification
 2. sequence alignment
 3. Cluster Identification
