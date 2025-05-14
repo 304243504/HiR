@@ -115,13 +115,10 @@ cat $OUTPUT_DIRECTORY3/$OUTPUT_PREFIX.part2.sam | grep 'NH:i:1$' > $OUTPUT_DIREC
 awk '{if($5>=20) print $0}' $OUTPUT_DIRECTORY3/$OUTPUT_PREFIX.part1_unique.sam > $OUTPUT_DIRECTORY3/$OUTPUT_PREFIX.part1_unique.q20.sam
 awk '{if($5>=20) print $0}' $OUTPUT_DIRECTORY3/$OUTPUT_PREFIX.part2_unique.sam > $OUTPUT_DIRECTORY3/$OUTPUT_PREFIX.part2_unique.q20.sam
 
-awk '{print $1}' $OUTPUT_DIRECTORY3/$OUTPUT_PREFIX.part1_unique.q20.sam >> $OUTPUT_DIRECTORY3/$OUTPUT_PREFIX.aln_list.txt
-awk '{print $1}' $OUTPUT_DIRECTORY3/$OUTPUT_PREFIX.part2_unique.q20.sam >> $OUTPUT_DIRECTORY3/$OUTPUT_PREFIX.aln_list.txt
-sort $OUTPUT_DIRECTORY3/$OUTPUT_PREFIX.aln_list.txt |uniq -c | sort -nrk 1 > $OUTPUT_DIRECTORY3/$OUTPUT_PREFIX.aln_list_sta.txt                 # 5,998,627
-awk '{if($1==2) print $2}' $OUTPUT_DIRECTORY3/$OUTPUT_PREFIX.aln_list_sta.txt > $OUTPUT_DIRECTORY3/$OUTPUT_PREFIX.pair_aln_uniqueID_list.txt    # 1,324,583
-
-grep -Fwf $OUTPUT_DIRECTORY3/$OUTPUT_PREFIX.pair_aln_uniqueID_list.txt $OUTPUT_DIRECTORY3/$OUTPUT_PREFIX.part1_unique.sam > $OUTPUT_DIRECTORY3/$OUTPUT_PREFIX.part1_PET_unique_aln.sam
-grep -Fwf $OUTPUT_DIRECTORY3/$OUTPUT_PREFIX.pair_aln_uniqueID_list.txt $OUTPUT_DIRECTORY3/$OUTPUT_PREFIX.part2_unique.sam > $OUTPUT_DIRECTORY3/$OUTPUT_PREFIX.part2_PET_unique_aln.sam
+awk '{print $1}' $OUTPUT_DIRECTORY3/$OUTPUT_PREFIX.part1_unique.q20.sam > IDtags1.txt
+awk '{print $1}' $OUTPUT_DIRECTORY3/$OUTPUT_PREFIX.part2_unique.q20.sam > IDtags2.txt
+grep -Fwf IDtags2.txt $OUTPUT_DIRECTORY3/$OUTPUT_PREFIX.part1_unique.sam > $OUTPUT_DIRECTORY3/$OUTPUT_PREFIX.part1_PET_unique_aln.sam
+grep -Fwf IDtags1.txt $OUTPUT_DIRECTORY3/$OUTPUT_PREFIX.part2_unique.sam > $OUTPUT_DIRECTORY3/$OUTPUT_PREFIX.part2_PET_unique_aln.sam
 
 
 ##################################### 2.3 Valid alignment data combination ##########################
